@@ -1,0 +1,697 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AtlasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imagen" Type="varchar" MaxLength="50" />
+          <Property Name="FK_Local" Type="int" />
+          <Property Name="FK_Empleado" Type="int" />
+          <Property Name="FK_Servicio" Type="int" />
+        </EntityType>
+        <EntityType Name="Citas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Usuario" Type="int" />
+          <Property Name="FK_Local" Type="int" />
+          <Property Name="FK_Empleado" Type="int" />
+          <Property Name="FechaHora" Type="datetime" />
+          <Property Name="FK_Estatus" Type="int" />
+          <Property Name="FechaRegistro" Type="datetime" />
+          <Property Name="FK_Servicio" Type="int" />
+          <Property Name="Calificacion" Type="int" />
+          <Property Name="Comentario" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="250" />
+          <Property Name="Paterno" Type="varchar" MaxLength="50" />
+          <Property Name="Materno" Type="varchar" MaxLength="50" />
+          <Property Name="FK_Rol" Type="int" />
+          <Property Name="NumeroEmpleado" Type="varchar" MaxLength="50" />
+          <Property Name="Servicio" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Estatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estatus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Atlas.dbo.Evento' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Evento">
+          <Property Name="Id" Type="int" />
+          <Property Name="Motivo" Type="varchar(max)" />
+          <Property Name="FechaHora" Type="datetime" />
+          <Property Name="FK_Usuario" Type="int" />
+          <Property Name="FK_Local" Type="int" />
+        </EntityType>-->
+        <EntityType Name="Favoritos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Local" Type="int" />
+          <Property Name="FK_Usuario" Type="int" />
+        </EntityType>
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Genero" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Horario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dia" Type="int" />
+          <Property Name="Hora" Type="time" Precision="7" />
+          <Property Name="FK_Local" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Instruccion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Instruccion" Type="varchar" MaxLength="250" />
+          <Property Name="FK_Local" Type="int" />
+          <Property Name="FK_Servicio" Type="int" />
+        </EntityType>
+        <EntityType Name="Local">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RFC" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="250" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" />
+          <Property Name="Observaciones" Type="nchar" MaxLength="10" />
+          <Property Name="Foto" Type="varchar" MaxLength="50" />
+          <Property Name="Latitud" Type="varchar" MaxLength="50" />
+          <Property Name="Longitud" Type="varchar" MaxLength="50" />
+          <Property Name="Categoria" Type="varchar" MaxLength="50" />
+          <Property Name="Estatus" Type="bit" />
+        </EntityType>
+        <EntityType Name="Local_Empleado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Local" Type="int" />
+          <Property Name="FK_Empleado" Type="int" />
+        </EntityType>
+        <EntityType Name="Promocion_Local">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Promocion" Type="int" />
+          <Property Name="FK_Local" Type="int" />
+        </EntityType>
+        <EntityType Name="Promocion_Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="FK_Promocion" Type="int" />
+          <Property Name="FK_Usuario" Type="int" />
+        </EntityType>
+        <EntityType Name="Promociones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Promocion" Type="varchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+          <Property Name="Fecha_Inicio" Type="datetime" />
+          <Property Name="Fecha_Final" Type="datetime" />
+          <Property Name="Tipo_Promocion" Type="bit" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RolUsuario" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Servicio_Local">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Local" Type="int" Nullable="false" />
+          <Property Name="FK_Servicio" Type="int" Nullable="false" />
+          <Property Name="Precio" Type="float" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Servicios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Servicio" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Suscripcion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Suscripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Suscripcion_Local">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Suscripcion" Type="int" />
+          <Property Name="FK_Local" Type="int" />
+        </EntityType>
+        <EntityType Name="Suscripcion_Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Suscripcion" Type="int" />
+          <Property Name="FK_Usuario" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tarjeta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tarjeta" Type="varchar" MaxLength="50" />
+          <Property Name="CVV" Type="int" />
+          <Property Name="MES" Type="varchar" MaxLength="2" />
+          <Property Name="Year" Type="varchar" MaxLength="4" />
+          <Property Name="FK_Cliente" Type="int" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="ApellidoPaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApellidoMaterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="250" />
+          <Property Name="FK_Genero" Type="int" />
+          <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="FotoUsuario" Type="varchar" MaxLength="50" />
+          <Property Name="Latitud" Type="varchar" MaxLength="50" />
+          <Property Name="Longitud" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Album_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Album" Type="Self.Album" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Album">
+              <PropertyRef Name="FK_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Album_Local">
+          <End Role="Local" Type="Self.Local" Multiplicity="0..1" />
+          <End Role="Album" Type="Self.Album" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Album">
+              <PropertyRef Name="FK_Local" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Album_Servicio_Local">
+          <End Role="Servicio_Local" Type="Self.Servicio_Local" Multiplicity="0..1" />
+          <End Role="Album" Type="Self.Album" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio_Local">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Album">
+              <PropertyRef Name="FK_Local" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Album_Servicios">
+          <End Role="Servicios" Type="Self.Servicios" Multiplicity="0..1" />
+          <End Role="Album" Type="Self.Album" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Album">
+              <PropertyRef Name="FK_Servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Citas_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="FK_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Citas_Estatus">
+          <End Role="Estatus" Type="Self.Estatus" Multiplicity="0..1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="FK_Estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Citas_Local">
+          <End Role="Local" Type="Self.Local" Multiplicity="0..1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="FK_Local" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Citas_Servicios">
+          <End Role="Servicios" Type="Self.Servicios" Multiplicity="0..1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="FK_Servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Citas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Citas" Type="Self.Citas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Citas">
+              <PropertyRef Name="FK_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Rol">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="FK_Rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+error 6004: The table 'Atlas.dbo.Evento' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Evento_Local" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'Atlas.dbo.Evento' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_Evento_Usuarios" />-->
+        <Association Name="FK_Favoritos_Local">
+          <End Role="Local" Type="Self.Local" Multiplicity="0..1" />
+          <End Role="Favoritos" Type="Self.Favoritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Favoritos">
+              <PropertyRef Name="FK_Local" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favoritos_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Favoritos" Type="Self.Favoritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Favoritos">
+              <PropertyRef Name="FK_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Local_Empleado_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="Local_Empleado" Type="Self.Local_Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Local_Empleado">
+              <PropertyRef Name="FK_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Local_Empleado_Local">
+          <End Role="Local" Type="Self.Local" Multiplicity="0..1" />
+          <End Role="Local_Empleado" Type="Self.Local_Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Local_Empleado">
+              <PropertyRef Name="FK_Local" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Promocion_Usuario_Promociones">
+          <End Role="Promociones" Type="Self.Promociones" Multiplicity="0..1" />
+          <End Role="Promocion_Usuario" Type="Self.Promocion_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promociones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Promocion_Usuario">
+              <PropertyRef Name="FK_Promocion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Promocion_Usuario_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Promocion_Usuario" Type="Self.Promocion_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Promocion_Usuario">
+              <PropertyRef Name="FK_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Local_Local">
+          <End Role="Local" Type="Self.Local" Multiplicity="1" />
+          <End Role="Servicio_Local" Type="Self.Servicio_Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Servicio_Local">
+              <PropertyRef Name="FK_Local" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Local_Servicios">
+          <End Role="Servicios" Type="Self.Servicios" Multiplicity="1" />
+          <End Role="Servicio_Local" Type="Self.Servicio_Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Servicio_Local">
+              <PropertyRef Name="FK_Servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Local_Servicios1">
+          <End Role="Servicios" Type="Self.Servicios" Multiplicity="1" />
+          <End Role="Servicio_Local" Type="Self.Servicio_Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Servicio_Local">
+              <PropertyRef Name="FK_Servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Suscripcion_Local_Local">
+          <End Role="Local" Type="Self.Local" Multiplicity="0..1" />
+          <End Role="Suscripcion_Local" Type="Self.Suscripcion_Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Suscripcion_Local">
+              <PropertyRef Name="FK_Local" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Suscripcion_Local_Suscripcion">
+          <End Role="Suscripcion" Type="Self.Suscripcion" Multiplicity="0..1" />
+          <End Role="Suscripcion_Local" Type="Self.Suscripcion_Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suscripcion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Suscripcion_Local">
+              <PropertyRef Name="FK_Suscripcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Suscripcion_Usuario_Suscripcion">
+          <End Role="Suscripcion" Type="Self.Suscripcion" Multiplicity="0..1" />
+          <End Role="Suscripcion_Usuario" Type="Self.Suscripcion_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suscripcion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Suscripcion_Usuario">
+              <PropertyRef Name="FK_Suscripcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Suscripcion_Usuario_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Suscripcion_Usuario" Type="Self.Suscripcion_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Suscripcion_Usuario">
+              <PropertyRef Name="FK_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarjeta_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Tarjeta" Type="Self.Tarjeta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tarjeta">
+              <PropertyRef Name="FK_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Genero">
+          <End Role="Genero" Type="Self.Genero" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genero">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="FK_Genero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AtlasModelStoreContainer">
+          <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Citas" EntityType="Self.Citas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estatus" EntityType="Self.Estatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Favoritos" EntityType="Self.Favoritos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genero" EntityType="Self.Genero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Horario" EntityType="Self.Horario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Instruccion" EntityType="Self.Instruccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Local" EntityType="Self.Local" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Local_Empleado" EntityType="Self.Local_Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Promocion_Local" EntityType="Self.Promocion_Local" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Promocion_Usuario" EntityType="Self.Promocion_Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Promociones" EntityType="Self.Promociones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servicio_Local" EntityType="Self.Servicio_Local" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servicios" EntityType="Self.Servicios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suscripcion" EntityType="Self.Suscripcion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suscripcion_Local" EntityType="Self.Suscripcion_Local" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suscripcion_Usuario" EntityType="Self.Suscripcion_Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarjeta" EntityType="Self.Tarjeta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Album_Empleado" Association="Self.FK_Album_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Album" EntitySet="Album" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Album_Local" Association="Self.FK_Album_Local">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Album" EntitySet="Album" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Album_Servicio_Local" Association="Self.FK_Album_Servicio_Local">
+            <End Role="Servicio_Local" EntitySet="Servicio_Local" />
+            <End Role="Album" EntitySet="Album" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Album_Servicios" Association="Self.FK_Album_Servicios">
+            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="Album" EntitySet="Album" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Citas_Empleado" Association="Self.FK_Citas_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Citas_Estatus" Association="Self.FK_Citas_Estatus">
+            <End Role="Estatus" EntitySet="Estatus" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Citas_Local" Association="Self.FK_Citas_Local">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Citas_Servicios" Association="Self.FK_Citas_Servicios">
+            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Citas_Usuarios" Association="Self.FK_Citas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Citas" EntitySet="Citas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Rol" Association="Self.FK_Empleado_Rol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favoritos_Local" Association="Self.FK_Favoritos_Local">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Favoritos" EntitySet="Favoritos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favoritos_Usuarios" Association="Self.FK_Favoritos_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Favoritos" EntitySet="Favoritos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Local_Empleado_Empleado" Association="Self.FK_Local_Empleado_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Local_Empleado" EntitySet="Local_Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Local_Empleado_Local" Association="Self.FK_Local_Empleado_Local">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Local_Empleado" EntitySet="Local_Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Promocion_Usuario_Promociones" Association="Self.FK_Promocion_Usuario_Promociones">
+            <End Role="Promociones" EntitySet="Promociones" />
+            <End Role="Promocion_Usuario" EntitySet="Promocion_Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Promocion_Usuario_Usuarios" Association="Self.FK_Promocion_Usuario_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Promocion_Usuario" EntitySet="Promocion_Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Local_Local" Association="Self.FK_Servicio_Local_Local">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Servicio_Local" EntitySet="Servicio_Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Local_Servicios" Association="Self.FK_Servicio_Local_Servicios">
+            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="Servicio_Local" EntitySet="Servicio_Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Local_Servicios1" Association="Self.FK_Servicio_Local_Servicios1">
+            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="Servicio_Local" EntitySet="Servicio_Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Suscripcion_Local_Local" Association="Self.FK_Suscripcion_Local_Local">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Suscripcion_Local" EntitySet="Suscripcion_Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Suscripcion_Local_Suscripcion" Association="Self.FK_Suscripcion_Local_Suscripcion">
+            <End Role="Suscripcion" EntitySet="Suscripcion" />
+            <End Role="Suscripcion_Local" EntitySet="Suscripcion_Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Suscripcion_Usuario_Suscripcion" Association="Self.FK_Suscripcion_Usuario_Suscripcion">
+            <End Role="Suscripcion" EntitySet="Suscripcion" />
+            <End Role="Suscripcion_Usuario" EntitySet="Suscripcion_Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Suscripcion_Usuario_Usuarios" Association="Self.FK_Suscripcion_Usuario_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Suscripcion_Usuario" EntitySet="Suscripcion_Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarjeta_Usuarios" Association="Self.FK_Tarjeta_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Tarjeta" EntitySet="Tarjeta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Genero" Association="Self.FK_Usuarios_Genero">
+            <End Role="Genero" EntitySet="Genero" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2006/04/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self">
+        <EntityContainer Name="ModelContainer"></EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS" Space="C-S">
+        <Alias Key="Model" Value="Model" />
+        <Alias Key="Target" Value="Model.Store" />
+        <EntityContainerMapping CdmEntityContainer="ModelContainer" StorageEntityContainer="ModelTargetContainer"></EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
