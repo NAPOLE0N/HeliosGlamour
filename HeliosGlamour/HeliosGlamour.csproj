@@ -50,6 +50,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -171,26 +173,96 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ServiciosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Album.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Citas.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Empleado.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Estatus.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Evento.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Favoritos.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Genero.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Horario.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Instruccion.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Local.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Local_Empleado.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Model.Context.cs">
+    <Compile Include="Models\Model11.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model.Context.tt</DependentUpon>
+      <DependentUpon>Model11.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model.cs">
+    <Compile Include="Models\Model11.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>Model11.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model.Designer.cs">
+    <Compile Include="Models\Model11.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model.edmx</DependentUpon>
+      <DependentUpon>Model11.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Promociones.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Promocion_Local.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Promocion_Usuario.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rol.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Servicios.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Servicio_Local.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Suscripcion.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Suscripcion_Local.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Suscripcion_Usuario.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tarjeta.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Usuarios.cs">
+      <DependentUpon>Model11.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -215,15 +287,15 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Model.Context.tt">
+    <Content Include="Models\Model11.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
+      <DependentUpon>Model11.edmx</DependentUpon>
+      <LastGenOutput>Model11.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model.tt">
+    <Content Include="Models\Model11.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.cs</LastGenOutput>
+      <DependentUpon>Model11.edmx</DependentUpon>
+      <LastGenOutput>Model11.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -231,12 +303,12 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Model.edmx">
+    <EntityDeploy Include="Models\Model11.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model11.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
+    <Content Include="Models\Model11.edmx.diagram">
+      <DependentUpon>Model11.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -283,6 +355,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Servicios\Create.cshtml" />
+    <Content Include="Views\Servicios\Delete.cshtml" />
+    <Content Include="Views\Servicios\Details.cshtml" />
+    <Content Include="Views\Servicios\Edit.cshtml" />
+    <Content Include="Views\Servicios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="debabf32e5ba4f25a9058b8b3aeeadd2" Name="Diagram1">
+        <EntityTypeShape EntityType="AtlasModel.Album" Width="1.5" PointX="11.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Citas" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Empleado" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Estatus" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Evento" Width="1.5" PointX="8.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Favoritos" Width="1.5" PointX="8.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Genero" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Horario" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Instruccion" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Local" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Local_Empleado" Width="1.5" PointX="8.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Promocion_Local" Width="1.5" PointX="13.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Promocion_Usuario" Width="1.5" PointX="8.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Promociones" Width="1.5" PointX="6" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Rol" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Servicio_Local" Width="1.5" PointX="11.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Servicios" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Suscripcion" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Suscripcion_Local" Width="1.5" PointX="11.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Suscripcion_Usuario" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.sysdiagrams" Width="1.5" PointX="13.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Tarjeta" Width="1.5" PointX="5.25" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AtlasModel.Usuarios" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <AssociationConnector Association="AtlasModel.FK_Album_Empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Album_Local" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Album_Servicio_Local" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Album_Servicios" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Citas_Empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Citas_Estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Citas_Local" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Citas_Servicios" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Citas_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Empleado_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Local_Empleado_Empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Evento_Local" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Evento_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Favoritos_Local" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Favoritos_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Usuarios_Genero" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Local_Empleado_Local" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Servicio_Local_Local" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Suscripcion_Local_Local" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Promocion_Usuario_Promociones" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Promocion_Usuario_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Servicio_Local_Servicios" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Servicio_Local_Servicios1" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Suscripcion_Local_Suscripcion" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Suscripcion_Usuario_Suscripcion" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Suscripcion_Usuario_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Tarjeta_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="AtlasModel.FK_Horario_Local" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
